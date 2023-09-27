@@ -1,0 +1,28 @@
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/categories
+
+###
+GET http://localhost:3000/categories/1
+
+###
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+  "name": "Category name",
+  "description": "Category description"
+}
+
+###
+PATCH http://localhost:3000/categories/1
+Content-Type: application/json
+
+{
+  "name": "Update category name",
+  "description": "Update category description"
+}
+
+###
+DELETE http://localhost:3000/categories/1
