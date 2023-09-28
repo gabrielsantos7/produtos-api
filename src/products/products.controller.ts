@@ -8,6 +8,7 @@ import {
   Body,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import Product from './product.interface';
 
 @Controller('produtos')
 export class ProductsController {
@@ -23,13 +24,18 @@ export class ProductsController {
     return this.productsService.findOne(+id);
   }
 
-  // @Post()
-  // create(@Body() product: Product) {
-  //   return this.productsService.create(product);
-  // }
+  @Post()
+  create(@Body() product: Product) {
+    return this.productsService.create(product);
+  }
 
-  // @Put(':id')
-  // update(@Param('id') id: string, @Body() product: Product) {
-  //   return this.productsService.update(+id, product);
-  // }
+  @Put(':id')
+  update(@Param('id') id: string, @Body() product: Product) {
+    return this.productsService.update(+id, product);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.productsService.remove(+id);
+  }
 }

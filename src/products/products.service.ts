@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import Product from './product.interface';
 
 @Injectable()
 export class ProductsService {
@@ -10,11 +11,17 @@ export class ProductsService {
     return `This action returns a #${id} product`;
   }
 
-  // create(product: Product) {
-  //   return 'This action adds a new product';
-  // }
+  create(product: Product) {
+    console.log('This action create a new product');
+    return product;
+  }
 
-  // update(id: number, product: Product) {
-  //   return `This action updates a #${id} product`;
-  // }
+  update(id: number, product: Product) {
+    console.log(`This action updates a #${id} product`);
+    return product;
+  }
+
+  remove(id: number) {
+    console.log(`This action removes a #${id} product`);
+  }
 }
