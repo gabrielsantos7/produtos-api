@@ -1,27 +1,42 @@
 import { Injectable } from '@nestjs/common';
-import Product from './product.interface';
+import Product from './product.model';
 
 @Injectable()
 export class ProductsService {
+  products: Product[] = [
+    new Product(1, 'P001', 'Product 1', 10.99),
+    new Product(2, 'P002', 'Product 2', 15.99),
+    new Product(3, 'P003', 'Product 3', 20.99),
+  ];
+
   findAll() {
-    return 'This action returns all products';
+    return this.products;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  findById(id: number) {
+    return this.products.find((product) => product.id === id);
   }
 
   create(product: Product) {
-    console.log('This action create a new product');
+    this.products.push(product);
     return product;
   }
 
   update(id: number, product: Product) {
-    console.log(`This action updates a #${id} product`);
+    //this.products[id] = product;
     return product;
   }
 
   remove(id: number) {
-    console.log(`This action removes a #${id} product`);
+    const indexToRemove = this.products.findIndex(
+      (product) => product.id === id,
+    );
+
+    if (indexToRemove !== -1) {
+      this.products.splice(indexToRemove, 1);
+      return true; // Indica que a remoção foi bem-sucedida
+    }
+
+    return false; // Indica que o produto com o ID especificado não foi encontrado
   }
 }

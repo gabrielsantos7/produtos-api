@@ -6,9 +6,10 @@ import {
   Put,
   Delete,
   Body,
+  NotFoundException,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import Product from './product.interface';
+import Product from './product.model';
 
 @Controller('produtos')
 export class ProductsController {
@@ -21,7 +22,7 @@ export class ProductsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+    return this.productsService.findById(+id);
   }
 
   @Post()
@@ -36,6 +37,9 @@ export class ProductsController {
 
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.productsService.remove(+id);
+    const success = this.productsService.remove(+id);
+    return success
+      ? `The product with id #${id} has been successfully deleted.`
+      : new NotFoundException('Product not found.');
   }
 }

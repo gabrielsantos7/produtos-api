@@ -11,18 +11,21 @@ POST http://localhost:3000/produtos
 Content-Type: application/json
 
 {
-  "name": "Category name",
-  "description": "Category description"
+  "id": 4,
+  "code": "P004",
+  "name": "Product 4",
+  "price": 19.99
 }
 
 ###
-PATCH http://localhost:3000/produtos/1
+PUT http://localhost:3000/produtos/4
 Content-Type: application/json
 
 {
-  "name": "Update category name",
-  "description": "Update category description"
+  "code": "P004",
+  "name": "Product 4 updated",
+  "price": 19.99
 }
 
 ###
-DELETE http://localhost:3000/produtos/1
+DELETE http://localhost:3000/produtos/3

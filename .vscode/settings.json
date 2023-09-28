@@ -18,5 +18,6 @@
     "titleBar.inactiveBackground": "#e0234e99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#E0234E"
+  "peacock.color": "#E0234E",
+  "material-icon-theme.activeIconPack": "nest",
 }
