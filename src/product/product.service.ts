@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import Product from './product.model';
 
 @Injectable()
-export class ProductsService {
+export class ProductService {
   products: Product[] = [
     new Product(1, 'P001', 'Product 1', 10.99),
     new Product(2, 'P002', 'Product 2', 15.99),
