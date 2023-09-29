@@ -11,32 +11,32 @@ import {
 import { ProductService } from './product.service';
 import Product from './product.model';
 
-@Controller('produtos')
+@Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-  findAll() {
+  async findAll(): Promise<Product[]> {
     return this.productService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string): Promise<Product> {
     return this.productService.findById(+id);
   }
 
   @Post()
-  create(@Body() product: Product) {
+  async create(@Body() product: Product) {
     return this.productService.create(product);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() product: Product) {
-    return this.productService.update(+id, product);
+  @Put()
+  async update(@Body() product: Product): Promise<[number]> {
+    return this.productService.update(product);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
+  async delete(@Param('id') id: string) {
     const success = this.productService.remove(+id);
     return success
       ? `The product with id #${id} has been successfully deleted.`

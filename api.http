@@ -1,31 +1,39 @@
 GET http://localhost:3000
 
 ###
-GET http://localhost:3000/produtos
+GET http://localhost:3000/products
 
 ###
-GET http://localhost:3000/produtos/1
+GET http://localhost:3000/products/1
 
 ###
-POST http://localhost:3000/produtos
+POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "id": 4,
-  "code": "P004",
-  "name": "Product 4",
-  "price": 19.99
+  "code": "P008",
+  "name": "Incredible Product",
+  "price": 39.99
 }
 
 ###
-PUT http://localhost:3000/produtos/4
+PUT http://localhost:3000/products/
 Content-Type: application/json
 
 {
-  "code": "P004",
-  "name": "Product 4 updated",
-  "price": 19.99
+  "id": 2,
+  "code": "P001",
+  "name": "Super Awesome Product Updated",
+  "price": "29.99"
 }
 
+# ###
+# PATCH http://localhost:3000/produtos/2
+# Content-Type: application/json
+
+# {
+#   "name": "Super Awesome Product Updated"
+# }
+
 ###
-DELETE http://localhost:3000/produtos/3
+DELETE http://localhost:3000/products/1
